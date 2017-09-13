@@ -54,10 +54,11 @@ namespace Xfx.Controls.Droid.XfxComboBox
             {
                 Adapter.Clear();
                 var vals = (ArrayList)results.Values;
-                foreach (var val in vals.ToArray())
-                {
-                    Adapter.Add(val);
-                }
+				Adapter.AddAll(vals.ToArray());
+                //foreach (var val in vals.ToArray())
+                //{
+                //    Adapter.Add(val);
+                //}
                 Adapter.NotifyDataSetChanged();
             }
         }
