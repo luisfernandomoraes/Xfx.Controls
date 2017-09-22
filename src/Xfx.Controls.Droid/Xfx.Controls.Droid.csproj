@@ -129,6 +129,12 @@
   <ItemGroup>
     <Folder Include="Resources\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Xfx.Controls\Xfx.Controls.csproj">
+      <Project>{6ED4280E-2175-47A9-A70B-3B0236A4D830}</Project>
+      <Name>Xfx.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\Xfx.Controls.Shared\Xfx.Controls.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

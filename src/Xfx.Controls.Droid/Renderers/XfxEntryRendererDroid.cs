@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using Android.Content;
 using Android.Content.Res;
+using Android.Graphics;
 using Android.Support.Design.Widget;
 using Android.Text;
 using Android.Util;
@@ -15,6 +16,7 @@ using Xfx.Controls.Droid.Extensions;
 using Xfx.Controls.Droid.Renderers;
 using Xfx.Extensions;
 using Application = Android.App.Application;
+using Color = Xamarin.Forms.Color;
 using FormsAppCompat = Xamarin.Forms.Platform.Android.AppCompat;
 
 [assembly: ExportRenderer(typeof(XfxEntry), typeof(XfxEntryRendererDroid))]
@@ -262,7 +264,7 @@ namespace Xfx.Controls.Droid.Renderers
 
 		private void SetMaxLenght()
 		{
-			Control.CounterMaxLength = Element.MaxLenght;
-		}
+            Control.EditText.SetFilters(new IInputFilter[] { new InputFilterLengthFilter(Element.MaxLenght) });
+        }
 	}
 }
