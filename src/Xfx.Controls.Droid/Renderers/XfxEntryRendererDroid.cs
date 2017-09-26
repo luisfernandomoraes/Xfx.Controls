@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using Android.Content;
 using Android.Content.Res;
+using Android.Graphics;
 using Android.Support.Design.Widget;
 using Android.Text;
 using Android.Util;
@@ -15,6 +16,7 @@ using Xfx.Controls.Droid.Extensions;
 using Xfx.Controls.Droid.Renderers;
 using Xfx.Extensions;
 using Application = Android.App.Application;
+using Color = Xamarin.Forms.Color;
 using FormsAppCompat = Xamarin.Forms.Platform.Android.AppCompat;
 
 [assembly: ExportRenderer(typeof(XfxEntry), typeof(XfxEntryRendererDroid))]
@@ -119,8 +121,6 @@ namespace Xfx.Controls.Droid.Renderers
 		protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
 			base.OnElementPropertyChanged(sender, e);
-			if (e.PropertyName == XfxEntry.BottomLineColorProperty.PropertyName)
-				SetHintText();
 			if (e.PropertyName == Entry.PlaceholderProperty.PropertyName)
 				SetHintText();
 			else if (e.PropertyName == XfxEntry.ErrorTextProperty.PropertyName)
@@ -186,8 +186,6 @@ namespace Xfx.Controls.Droid.Renderers
 		{
 			if (Element.PlaceholderColor == Color.Default)
 				EditText.SetHintTextColor(_defaultHintColor);
-			else if (Element.BottomLineColor != Color.Default)
-				EditText.SetHintTextColor(Element.BottomLineColor.ToAndroid());
 			else
 				EditText.SetHintTextColor(Element.PlaceholderColor.ToAndroid());
 		}
@@ -267,7 +265,7 @@ namespace Xfx.Controls.Droid.Renderers
 
 		private void SetMaxLenght()
 		{
-			Control.CounterMaxLength = Element.MaxLenght;
-		}
+            Control.EditText.SetFilters(new IInputFilter[] { new InputFilterLengthFilter(Element.MaxLenght) });
+        }
 	}
 }

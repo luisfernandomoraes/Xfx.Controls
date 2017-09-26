@@ -1,11 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
-             xmlns:app="clr-namespace:Xfx.Controls.Example;assembly=Xfx.Controls.Example"
-             x:Class="Xfx.Controls.Example.MainPage"
-             Title="Custom Controls Example">
+<ContentPage
+    x:Class="Xfx.Controls.Example.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:Xfx.Controls.Example;assembly=Xfx.Controls.Example"
+    xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
+    Title="Custom Controls Example">
     <ContentPage.BindingContext>
         <app:MainPageModel />
     </ContentPage.BindingContext>
@@ -17,7 +18,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ScrollView Padding="8">
-        <Grid RowSpacing="0" ColumnSpacing="0">
+        <Grid ColumnSpacing="0" RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -28,32 +29,43 @@
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" Text="ComboBox" />
-            <xfx:XfxComboBox Grid.Row="0"
-                             Grid.Column="1"
-                             Focused="Email_OnFocused"
-                             Unfocused="Email_OnUnfocused"
-                             Placeholder="Enter your email address"
-                             Text="{Binding EmailAddress}"
-                             ItemsSource="{Binding EmailSuggestions}"
-                             SortingAlgorithm="{Binding SortingAlgorithm}" />
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="ComboBox" />
+            <xfx:XfxComboBox
+                Grid.Row="0"
+                Grid.Column="1"
+                Focused="Email_OnFocused"
+                ItemsSource="{Binding EmailSuggestions}"
+                Placeholder="Enter your email address"
+                SortingAlgorithm="{Binding SortingAlgorithm}"
+                Text="{Binding EmailAddress}"
+                Unfocused="Email_OnUnfocused" />
 
-            <Label Grid.Row="1" Grid.Column="0" Text="Material Entry" />
-            <xfx:XfxEntry Grid.Row="1"
-                          Grid.Column="1"
-                          BottomLineColor="Red"
-                          Placeholder="Enter your name"
-                          Text="{Binding Name}"
-                          ErrorText="{Binding NameErrorText}" />
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="Material Entry" />
+            <xfx:XfxEntry
+                Grid.Row="1"
+                Grid.Column="1"
+                ErrorText="{Binding NameErrorText}"
+                Placeholder="Enter your name"
+                Text="{Binding Name}" />
 
-            <Label Grid.Row="2" Grid.Column="0" Text="No Floating Label" />
-            <xfx:XfxEntry Grid.Row="2"
-                          Grid.Column="1"
-                          Placeholder="This hint won't float, and it's a password entry"
-                          Text="{Binding Foo}"
-                          ErrorText="{Binding FooErrorText}"
-                          IsPassword="True"
-                          FloatingHintEnabled="False" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="No Floating Label" />
+            <xfx:XfxEntry
+                Grid.Row="2"
+                Grid.Column="1"
+                ErrorText="{Binding FooErrorText}"
+                FloatingHintEnabled="False"
+                IsPassword="True"
+                Placeholder="This hint won't float, and it's a password entry"
+                Text="{Binding Foo}" />
         </Grid>
     </ScrollView>
 </ContentPage>
