@@ -109,17 +109,18 @@ namespace Xfx.Controls.Droid.Renderers
 				SetFloatingHintEnabled();
 				SetIsEnabled();
 				SetMaxLenght();
-
 				Control.ErrorEnabled = true;
 			}
 		}
 
 
 
+
 		protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
 			base.OnElementPropertyChanged(sender, e);
-
+			if (e.PropertyName == XfxEntry.BottomLineColorProperty.PropertyName)
+				SetHintText();
 			if (e.PropertyName == Entry.PlaceholderProperty.PropertyName)
 				SetHintText();
 			else if (e.PropertyName == XfxEntry.ErrorTextProperty.PropertyName)
@@ -144,6 +145,7 @@ namespace Xfx.Controls.Droid.Renderers
 					 (e.PropertyName == Entry.FontFamilyProperty.PropertyName) ||
 					 (e.PropertyName == Entry.FontSizeProperty.PropertyName))
 				SetFont();
+
 		}
 
 		private void ControlOnFocusChange(object sender, FocusChangeEventArgs args)
@@ -153,10 +155,11 @@ namespace Xfx.Controls.Droid.Renderers
 				var manager = (InputMethodManager)Application.Context.GetSystemService(Context.InputMethodService);
 
 				EditText.PostDelayed(() =>
-				{
-					EditText.RequestFocus();
-					manager.ShowSoftInput(EditText, 0);
-				},
+					{
+						
+						//EditText.RequestFocus();
+						manager.ShowSoftInput(EditText, 0);
+					},
 					100);
 			}
 
@@ -183,6 +186,8 @@ namespace Xfx.Controls.Droid.Renderers
 		{
 			if (Element.PlaceholderColor == Color.Default)
 				EditText.SetHintTextColor(_defaultHintColor);
+			else if (Element.BottomLineColor != Color.Default)
+				EditText.SetHintTextColor(Element.BottomLineColor.ToAndroid());
 			else
 				EditText.SetHintTextColor(Element.PlaceholderColor.ToAndroid());
 		}

@@ -15,13 +15,18 @@ namespace Xfx
 			typeof(XfxEntry),
 			true);
 
+		public static readonly BindableProperty BottomLineColorProperty = BindableProperty.Create(nameof(BottomLineColor),
+			typeof(Color),
+			typeof(XfxEntry),
+			Color.Black);
+
 		public Color BottomLineColor
 		{
 			get => (Color)GetValue(BottomLineColorProperty);
 			set => SetValue(BottomLineColorProperty, value);
 		}
 
-		private readonly BindableProperty BottomLineColorProperty = BindableProperty.Create(nameof(BottomLineColor), typeof(Color), typeof(XfxEntry), Color.Black);
+
 
 		public int MaxLenght
 		{
@@ -29,7 +34,7 @@ namespace Xfx
 			set => SetValue(MaxLenghtProperty, value);
 		}
 
-		private readonly BindableProperty MaxLenghtProperty = BindableProperty.Create(nameof(MaxLenght), typeof(int), typeof(XfxEntry), int.MaxValue);
+		public static readonly BindableProperty MaxLenghtProperty = BindableProperty.Create(nameof(MaxLenght), typeof(int), typeof(XfxEntry), int.MaxValue);
 
 		/// <summary>
 		/// <c>true</c> to float the hint into a label, otherwise <c>false</c>. This is a bindable property.
@@ -37,7 +42,7 @@ namespace Xfx
 		public bool FloatingHintEnabled
 		{
 			get { return (bool)GetValue(FloatingHintEnabledProperty); }
-			set { SetValue(FloatingHintEnabledProperty, value); }
+			set => SetValue(FloatingHintEnabledProperty, value);
 		}
 
 		/// <summary>

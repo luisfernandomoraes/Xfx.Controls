@@ -41,6 +41,7 @@
             <Label Grid.Row="1" Grid.Column="0" Text="Material Entry" />
             <xfx:XfxEntry Grid.Row="1"
                           Grid.Column="1"
+                          BottomLineColor="Red"
                           Placeholder="Enter your name"
                           Text="{Binding Name}"
                           ErrorText="{Binding NameErrorText}" />
