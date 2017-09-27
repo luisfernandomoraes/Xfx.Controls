@@ -263,9 +263,13 @@ namespace Xfx.Controls.Droid.Renderers
 			}
 		}
 
-		private void SetMaxLenght()
-		{
-            Control.EditText.SetFilters(new IInputFilter[] { new InputFilterLengthFilter(Element.MaxLenght) });
-        }
+	    private void SetMaxLenght()
+	    {
+	        if (Element.MaxLenght <= 0) return;
+
+	        Control.CounterEnabled = true;
+	        Control.CounterMaxLength = Element.MaxLenght;
+	        Control.EditText.SetFilters(new IInputFilter[] {new InputFilterLengthFilter(Element.MaxLenght)});
+	    }
 	}
 }

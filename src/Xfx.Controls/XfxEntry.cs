@@ -16,7 +16,7 @@ namespace Xfx
 			true);
 
 
-	    private readonly BindableProperty MaxLenghtProperty = BindableProperty.Create(nameof(MaxLenght), typeof(int), typeof(XfxEntry), int.MaxValue);
+	    private readonly BindableProperty MaxLenghtProperty = BindableProperty.Create(nameof(MaxLenght), typeof(int), typeof(XfxEntry), 0);
 
 	    public int MaxLenght
 	    {
